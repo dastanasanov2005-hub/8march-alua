@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>🌸 8 Марта</title>
+
+  <link rel="stylesheet" href="./styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ===== PAGE 1 ===== -->
+  <section class="page page1 active" id="page1">
+    <div class="hero">
+      <div class="card">
+        <h1>Как ты, любимая? 💗</h1>
+
+        <p class="sub">
+          У меня есть для тебя подарок. Чтобы этот подарок был ещё более трогательным,
+          давай включим твою любимую песню.
+        </p>
+
+        <button class="music-btn" id="musicBtnBig">🎵 Включить музыку</button>
+        <p class="hint" id="musicHint">Нажми кнопку — музыка будет играть фоном.</p>
+
+        <!-- появится только после включения музыки -->
+        <button class="next-btn hidden" id="toPage2">Открыть следующую страницу ➜</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PAGE 2 ===== -->
+  <section class="page page2" id="page2">
+    <div class="about-wrap">
+      <div class="photo-card">
+        <img class="me" src="./assets/photos/das.jpeg" alt="Моя фотография" />
+        <div class="polaroid-text">Я, который тебя очень любит</div>
+      </div>
+
+      <div class="type-area">
+        <div class="type-text" id="typeText"></div>
+        <div class="caret" aria-hidden="true"></div>
+      </div>
+
+      <button class="next-btn2" id="toPage4">Дальше ➜</button>
+    </div>
+  </section>
+
+  <!-- музыка -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="./assets/music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- ===== PAGE 4 ===== -->
+  <section class="page page4" id="page4">
+    <div class="about-wrap">
+      <div class="photo-card polaroid-rotate2">
+        <img class="me" src="./assets/photos/DPNG6248.JPG" alt="Моя любимая" />
+        <div class="polaroid-text">Ты, самая красивая в мире</div>
+      </div>
+
+      <div class="type-area">
+        <div class="type-text special-text">Чтобы сказать тебе самое важное…</div>
+      </div>
+
+      <button class="next-btn2" id="toPage5">Дальше ➜</button>
+    </div>
+  </section>
+
+  <!-- ===== PAGE 5 ===== -->
+  <section class="page page5" id="page5">
+<div class="p5-petals">
+  <span class="p5-petal"></span><span class="p5-petal"></span><span class="p5-petal"></span>
+  <span class="p5-petal"></span><span class="p5-petal"></span><span class="p5-petal"></span>
+  <span class="p5-petal"></span>
+</div>
+    <div class="p5-wrap">
+      <div class="p5-header">
+        <h2 class="p5-title">Самое важное… 💗</h2>
+        <p class="p5-sub">Мен саған дайындаған кішкентай әлемім…</p>
+      </div>
+
+      <div class="p5-panel">
+        <div class="p5-grid">
+
+          <button class="p5-card" id="cardWords" type="button">
+            <div class="p5-card-top">
+              <div>
+                <div class="p5-card-title">Жылы сөздер<br>&amp; тілектер</div>
+                <div class="p5-card-desc">Тек саған арналған жылы сөздер мен тілектерім…</div>
+              </div>
+              <div class="p5-icon">💌</div>
+            </div>
+          </button>
+
+          <button class="p5-card" id="cardMemories" type="button">
+            <div class="p5-card-top">
+              <div>
+                <div class="p5-card-title">Жылы естеліктер</div>
+                <div class="p5-card-desc">Біздің ең тәтті-және ұмытылмас естеліктеріміз…</div>
+              </div>
+              <div class="p5-icon">🖼️</div>
+            </div>
+          </button>
+
+          <button class="p5-card" id="cardThanks" type="button">
+            <div class="p5-card-top">
+              <div>
+                <div class="p5-card-title">Саған рахмет</div>
+                <div class="p5-card-desc">Маған сенің өмірімде бар екенің үшін рақмет…</div>
+              </div>
+              <div class="p5-icon">🌸</div>
+            </div>
+          </button>
+
+          <!-- Нежная карточка-заметка -->
+          <button class="p5-card p5-card-note" id="cardNote" type="button">
+            <div class="p5-card-top">
+              <div>
+                <div class="p5-card-title">Кішкентай сыр 💗</div>
+                <div class="p5-card-desc p5-note-text">
+                  Әр карточка — жүрегімнің бір бөлігі…
+                </div>
+                <div class="p5-note-ru">Каждая карточка — это частичка моего сердца 💗</div>
+              </div>
+              <div class="p5-icon">✨</div>
+            </div>
+          </button>
+
+          <button class="p5-card p5-card-wide" id="cardVideo" type="button">
+            <div class="p5-card-top">
+              <div>
+                <div class="p5-card-title">Біздің видео</div>
+                <div class="p5-card-desc">Естеліктерден жасалған кішкентай видео…</div>
+              </div>
+              <div class="p5-icon">🎬</div>
+            </div>
+
+            <div class="p5-video-preview">
+              <div class="p5-play">▶</div>
+            </div>
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PAGE 6 ===== -->
+  <section class="page page6" id="page6">
+    <div class="p6-wrap">
+      <h2 class="p6-title">Жылы сөздер &amp; тілектер 💌</h2>
+      <p class="p6-sub">Мұнда кейін мәтіндер болады (сен айтқан соң толтырамыз).</p>
+      <button class="next-btn2" id="backTo5a" type="button">← Артқа</button>
+    </div>
+  </section>
+
+  <!-- ===== PAGE 7 ===== -->
+  <section class="page page7" id="page7">
+    <div class="p6-wrap">
+      <h2 class="p6-title">Жылы естеліктер 🖼️</h2>
+      <p class="p6-sub">Мұнда кейін фотолар/галерея болады.</p>
+      <button class="next-btn2" id="backTo5b" type="button">← Артқа</button>
+    </div>
+  </section>
+
+  <!-- ===== PAGE 8 ===== -->
+  <section class="page page8" id="page8">
+    <div class="p6-wrap">
+      <h2 class="p6-title">Саған рахмет 🌸</h2>
+      <p class="p6-sub">Мұнда кейін жылы “рахмет” мәтіні болады.</p>
+      <button class="next-btn2" id="backTo5c" type="button">← Артқа</button>
+    </div>
+  </section>
+
+  <!-- ===== PAGE 9 ===== -->
+  <section class="page page9" id="page9">
+    <div class="p6-wrap">
+      <h2 class="p6-title">Біздің видео 🎬</h2>
+      <p class="p6-sub">Видео файлын кейін қоямыз: <b>assets/video.mp4</b></p>
+
+      <video class="p6-video" controls>
+        <source src="./assets/video.mp4" type="video/mp4" />
+      </video>
+
+      <button class="next-btn2" id="backTo5d" type="button">← Артқа</button>
+    </div>
+  </section>
+
+  <script src="./script.js"></script>
+</body>
+</html>
