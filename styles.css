@@ -949,8 +949,6 @@ h1{
   pointer-events:none;
 }
 
-
-}
 .mem-card:hover::before{ opacity: 1; }
 
 /* орналасуы (әдемі “мозаика”) */
@@ -1018,4 +1016,42 @@ h1{
   color: #fff;
   font-size: 20px;
   box-shadow: 0 14px 40px rgba(0,0,0,.4);
+}
+
+
+
+
+/* =========================
+   FIX: Mobile responsive (Page6)
+   Desktop-та бәрі бұрынғыша,
+   Mobile-та polaroid мәтінге кірмейді
+========================= */
+@media (max-width: 600px){
+
+  /* қағаздың ішкі арақашықтығы */
+  .letter-paper{
+    padding: 18px 14px 18px;
+  }
+
+  /* ЕҢ МАҢЫЗДЫСЫ: polaroid-тарды mobile-та ағымға түсіреміз */
+  .polaroid{
+    position: static;      /* абсолют емес */
+    width: min(240px, 78vw);
+    margin: 10px auto;
+    box-shadow: 0 16px 50px rgba(0,0,0,.22);
+  }
+
+  /* бұрыштарын аздап қисаю қылып қалдыруға болады */
+  .polaroid-a{ transform: rotate(-4deg); }
+  .polaroid-b{ transform: rotate(4deg); }
+
+  /* мәтін қорабы */
+  .letter-box{
+    width: min(680px, 94vw);
+    margin: 10px auto 0;
+    padding: 14px 12px;
+  }
+
+  .letter-box-title{ font-size: 34px; }
+  .letter-text{ font-size: 15px; line-height: 1.65; }
 }
