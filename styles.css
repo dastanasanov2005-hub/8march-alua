@@ -1506,3 +1506,24 @@ h1{
     transition: none !important;
   }
 }
+
+
+/* iPhone-та кнопкалар басылмай қалса — overlay-ды өшіру */
+.page::before,
+.page::after{
+  pointer-events: none !important;
+}
+
+/* Ең жиі overlay класстар */
+.aurora, .sparkles, .bokeh, .dust, .beams,
+.p4-aurora, .p4-sparkles, .p4-bokeh, .p4-dust, .p4-beams{
+  pointer-events: none !important;
+}
+
+/* Кнопка әрқашан үстінде */
+button, a, .music-btn, .next-btn2, .next-btn, .btn{
+  position: relative;
+  z-index: 9999;
+  pointer-events: auto;
+  touch-action: manipulation; /* iOS-та tap жақсарады */
+}
