@@ -1573,18 +1573,19 @@ button, a, .music-btn, .next-btn2, .next-btn, .btn{
 }
 
 
-/* ===== FIX: Полароид астындағы жазу ===== */
-.photo-card{
-  position: relative;
-}
+/* ===== FIX: Полароид жазуын дұрыс орналастыру ===== */
 
+/* Абсолютті позицияны өшіреміз */
 .polaroid-text{
-  position: absolute;
-  bottom: 14px;          /* төменгі ақ аймаққа нақты отырғызамыз */
-  left: 0;
-  width: 100%;
+  position: static !important;
+  margin-top: 12px;
   text-align: center;
   font-family: 'Caveat', cursive;
   font-size: 22px;
-  color: #111;           /* ақ фонда қара түс */
+  color: #111;
+}
+
+/* Фото картасының төменгі padding-ін азайтамыз */
+.photo-card{
+  padding: 14px;
 }
