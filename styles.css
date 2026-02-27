@@ -1527,3 +1527,46 @@ button, a, .music-btn, .next-btn2, .next-btn, .btn{
   pointer-events: auto;
   touch-action: manipulation; /* iOS-та tap жақсарады */
 }
+
+
+/* ===== FIX: Page2 мәтін/батырма әрқашан үстінде ===== */
+.page2{
+  position: relative;
+  overflow: hidden;
+}
+
+.page2 .p2-hearts{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Контент жүректерден үстінде */
+.page2 .about-wrap{
+  position: relative;
+  z-index: 5;
+}
+
+/* Нақты текст/кнопка */
+.page2 .type-area,
+.page2 .type-text,
+.page2 .caret,
+.page2 .next-btn2{
+  position: relative;
+  z-index: 6;
+  color: rgba(255,255,255,.95);
+}
+
+
+@media (max-width: 600px){
+
+  .photo-card{
+    width: min(220px, 75vw);
+  }
+
+  .me{
+    max-height: 300px;
+  }
+
+}
