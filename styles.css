@@ -1569,4 +1569,22 @@ button, a, .music-btn, .next-btn2, .next-btn, .btn{
     max-height: 300px;
   }
 
+
+}
+
+
+/* ===== FIX: Полароид астындағы жазу ===== */
+.photo-card{
+  position: relative;
+}
+
+.polaroid-text{
+  position: absolute;
+  bottom: 14px;          /* төменгі ақ аймаққа нақты отырғызамыз */
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: #111;           /* ақ фонда қара түс */
 }
