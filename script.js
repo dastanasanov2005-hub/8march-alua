@@ -16,15 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function onClick(id, handler) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.addEventListener("click", handler);
-    // mobile tap сезімі жақсы болсын
-    el.addEventListener("touchend", (e) => {
-      e.preventDefault();
-      handler(e);
-    }, { passive: false });
-  }
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener("click", handler);
+}
 
   /* ===== Музыка ===== */
   const bgMusic = document.getElementById("bgMusic");
@@ -155,58 +150,54 @@ document.addEventListener("DOMContentLoaded", () => {
     videoEl.addEventListener("ended", resume);
   }
 
-  /* ===== Page4 tilt gyro (қалдырдық) ===== */
-  (() => {
-    const card = document.querySelector("#page4 .photo-card");
-    const zone = document.querySelector("#page4 .p4-polaroid-float");
-    if (!card || !zone) return;
+  /* ===== Page4 tilt gyro (popup жоқ нұсқа) ===== */
+(() => {
+  const card = document.querySelector("#page4 .photo-card");
+  const zone = document.querySelector("#page4 .p4-polaroid-float");
+  if (!card || !zone) return;
 
-    const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 
-    let tx = 0, ty = 0;
-    let cx = 0, cy = 0;
-    let anim = null;
+  let tx = 0, ty = 0;
+  let cx = 0, cy = 0;
+  let anim = null;
 
-    const render = () => {
-      cx += (tx - cx) * 0.12;
-      cy += (ty - cy) * 0.12;
+  const render = () => {
+    cx += (tx - cx) * 0.12;
+    cy += (ty - cy) * 0.12;
 
-      card.style.setProperty("--rx", `${cx.toFixed(2)}deg`);
-      card.style.setProperty("--ry", `${cy.toFixed(2)}deg`);
-      card.style.setProperty("--tz", `-6px`);
+    card.style.setProperty("--rx", `${cx.toFixed(2)}deg`);
+    card.style.setProperty("--ry", `${cy.toFixed(2)}deg`);
+    card.style.setProperty("--tz", `-6px`);
 
-      anim = requestAnimationFrame(render);
-    };
+    anim = requestAnimationFrame(render);
+  };
 
-    const start = () => {
-      if (anim) return;
-      anim = requestAnimationFrame(render);
-    };
+  const start = () => {
+    if (anim) return;
+    anim = requestAnimationFrame(render);
+  };
 
-    const enableGyro = () => {
-      start();
-      window.addEventListener("deviceorientation", (ev) => {
-        if (ev.beta == null || ev.gamma == null) return;
-        tx = clamp((ev.beta - 25) / 7, -8, 8);
-        ty = clamp((ev.gamma) / 6, -10, 10);
-      }, { passive: true });
-    };
+  const stop = () => {
+    if (!anim) return;
+    cancelAnimationFrame(anim);
+    anim = null;
+    tx = ty = cx = cy = 0;
+  };
 
-    const needIOSPermission =
-      typeof DeviceOrientationEvent !== "undefined" &&
-      typeof DeviceOrientationEvent.requestPermission === "function";
+  /* Desktop hover эффекті ғана қалады */
+  if (window.matchMedia("(hover:hover)").matches) {
+    card.addEventListener("mouseenter", start);
+    card.addEventListener("mousemove", (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width;
+      const y = (e.clientY - r.top) / r.height;
+      ty = clamp((x - 0.5) * 12, -10, 10);
+      tx = clamp((0.5 - y) * 10, -8, 8);
+    });
+    card.addEventListener("mouseleave", stop);
+  }
 
-    if (needIOSPermission) {
-      const once = async () => {
-        try {
-          const res = await DeviceOrientationEvent.requestPermission();
-          if (res === "granted") enableGyro();
-        } catch (e) {}
-      };
-      // тек user gesture кезінде
-      document.addEventListener("click", once, { once: true });
-    } else {
-      enableGyro();
-    }
-  })();
+  /* 📵 iPhone гироскоп толық өшірілді */
+})();
 });
